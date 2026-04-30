@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "."
-          target: "/root/Veera_Tube_clone"
+          target: "/home/ec2-user/veeratube"
 
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.10
@@ -29,7 +29,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /root/Veera_Tube_clone/veeratube
+            cd /home/ec2-user/veeratube/veeratube
 
             # Install Docker if not exists
             if ! command -v docker &> /dev/null
